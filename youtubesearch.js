@@ -5,6 +5,7 @@
         part: 'snippet',
         key: 'AIzaSyCYGQsuv0YLyrE4N11eXj52gBvsnfJ5v9s',
         q: query
+        ,maxResults: 3
     };
     var videoIds = [];
   
@@ -17,8 +18,14 @@
       for (var j = 0; j < videoIds.length; j++) {
           $.getJSON(url2 + videoIds[j], params, function(response){
             console.log(response);
+            var stats = response.items[0].statistics;
+            console.log("views: " + stats.viewCount);
+            console.log("likes: " + stats.likeCount);
+            console.log("dislikes: " + stats.dislikeCount);
           })
         }
     });
 
+//TODO create our own youtube video object constructor 
+//add the data we care about- url, stats, like%
 
