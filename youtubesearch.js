@@ -7,32 +7,41 @@
         q: query
         ,maxResults: 3
     };
-    var videoIds = [];
+
     var youtubeVideos = [];
   
     $.getJSON(url, params, function (searchTerm) {
       console.log(searchTerm);
         for (var i = 0; i < searchTerm.items.length; i++) {
+            youtubeVideos.push(new youtubeVid());
             console.log("https://www.youtube.com/watch?v=" + searchTerm.items[i].id.videoId);
-            videoIds.push(searchTerm.items[i].id.videoId);
-      }
-      for (var j = 0; j < videoIds.length; j++) {
-          $.getJSON(url2 + videoIds[j], params, function(response){
-            console.log(response);
-            var stats = response.items[0].statistics;
-            youtubeVideos.push(new youtubeVid("test",stats,"test image"));
-          })
+            youtubeVideos[i].url = "https://www.youtube.com/watch?v=" + searchTerm.items[i].id.videoId;
+            youtubeVideos[i].thumbnail = searchTerm.items[i].snippet.thumbnails.medium.url;
+            youtubeVideos[i].description = searchTerm.items[i].snippet.description;
+            console.log("object: ", youtubeVideos[i]);
+
+            //calling youtube API to get specific video statistics
         }
+
         console.log(youtubeVideos);
     });
+
+    
+for (var i = 0; i < youtubeVideos.length; i++) {
+    $.getJSON(youtubeVideos[i].url, params, function(response){
+                console.log("response: ", response);
+                var stats = response.items[0].statistics;
+            });
+}
+    
 
 //TODO create our own youtube video object constructor 
 //add the data we care about- url, stats, like%
 
-function youtubeVid(link,stats,img){
-    this.url = link;
-    this.statistics = stats;
-    this.thumbnail = img;
-    this.statistics.likePercentage = parseInt(this.statistics.likeCount)/(parseInt(this.statistics.likeCount) + parseInt(this.statistics.dislikeCount));
+function youtubeVid(){
+    this.url ;
+    this.statistics ;
+    this.likePercentage ;
+    this.thumbnail ;
+    this.description ;
 }
-
