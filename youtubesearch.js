@@ -13,24 +13,29 @@
     $.getJSON(url, params, function (searchTerm) {
       console.log(searchTerm);
         for (var i = 0; i < searchTerm.items.length; i++) {
-            youtubeVideos.push(new youtubeVid());
+            var tempVideo = new youtubeVid();
 
-            youtubeVideos[i].url = "https://www.youtube.com/watch?v=" + searchTerm.items[i].id.videoId;
-            youtubeVideos[i].id = searchTerm.items[i].id.videoId;
-            youtubeVideos[i].thumbnail = searchTerm.items[i].snippet.thumbnails.medium.url;
-            youtubeVideos[i].description = searchTerm.items[i].snippet.description;
-            console.log("object: ", youtubeVideos[i]);
+            tempVideo.url = "https://www.youtube.com/watch?v=" + searchTerm.items[i].id.videoId;
+            tempVideo.id = searchTerm.items[i].id.videoId;
+            tempVideo.thumbnail = searchTerm.items[i].snippet.thumbnails.medium.url;
+            tempVideo.description = searchTerm.items[i].snippet.description;
+            
 
-            //calling youtube API to get specific video statistics
-            $.getJSON(url2 + youtubeVideos[i].id, params, function(response){
-                console.log("response: ", response);
-                // youtubeVideos[i].statistics = response.items[0].statistics;
-                // youtubeVideos[i].likePercentage = parseInt(youtubeVideos[i].statistics.likeCount) / (parseInt(youtubeVideos[i].statistics.likeCount) + parseInt(youtubeVideos[i].statistics.dislikeCount));
+            $.getJSON(url2 + tempVideo.id, params, function(response){
+                // console.log("response: ", response);
+                tempVideo.statistics = response.items[0].statistics;
+                tempVideo.likePercentage = parseInt(tempVideo.statistics.likeCount) / (parseInt(tempVideo.statistics.likeCount) + parseInt(tempVideo.statistics.dislikeCount));
+                console.log("tempVideo: ", tempVideo);
+                youtubeVideos.push(tempVideo);
             });
+            
         }
-
         console.log(youtubeVideos);
     });
+
+for (var i = 0; i < youtubeVideos.length; i++) {
+    
+}
 
     
 
