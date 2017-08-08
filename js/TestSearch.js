@@ -1,6 +1,8 @@
-$("#searchButton").on("click", function (event) {
+$("#W3SearchButton").on("click", function (event) {
 
-event.preventDefault();
+// event.preventDefault();
+
+$('#empty-div').empty();
 
 var SearchTerm = $("#search").val().trim();
 
@@ -8,7 +10,7 @@ console.log ("Search Term: " + SearchTerm);
 
 
 //W3 Schools
-var queryURL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:djvpgk424qy&key=AIzaSyBmlXlslIssD1zOH_GvxoD0z5UCTqjIGDc"
+var queryURL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:djvpgk424qy&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
 
   $.ajax({
           url: queryURL,
@@ -20,16 +22,25 @@ var queryURL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004
 
           	
           
-          var content = "<div id='contentItem'><h1>" + response.items[i].title + "</h1> <a href=" + response.items[i].link + ">"+ response.items[i].link+ "</a>"  + "</h1> <p>Section: "+ response.items[i].snippet + "</p></div>";
+          var content = "<div id='contentItem'><h3>" + "<a href=" + response.items[i].formattedUrl+">" + response.items[i].title + "</a>" + "</h3>" + "<p>Section: "+ response.items[i].snippet + "</p></div>";
 
-          $('#displayResults1').append(content);
+          $('#empty-div').append(content);
       		}
 
     });
+    });
 	
+$("#googleSearchButton").on("click", function (event) {
 
+// event.preventDefault();
+
+$('#empty-div').empty();
+
+var SearchTerm = $("#search").val().trim();
+
+console.log ("Search Term: " + SearchTerm);
 //Overstack.com
-var query2URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:zwg44jgvva0&key=AIzaSyBmlXlslIssD1zOH_GvxoD0z5UCTqjIGDc"
+var query2URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:zwg44jgvva0&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
 
   $.ajax({
           url: query2URL,
@@ -43,14 +54,14 @@ var query2URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=00
           
           var content2 = "<div id='contentItem'><h1>" + response2.items[i].title + "</h1> <a href=" + response2.items[i].link + ">"+ response2.items[i].link+ "</a>"  + "</h1> <p>Section: "+ response2.items[i].snippet + "</p></div>";
 
-          $('#displayResults2').append(content2);
+          $('#empty-div').append(content2);
       		}
 
     });
-
+});
 
 //Google (Exlcuding W3 Schools, Overstack, YouTube)
-var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:jnafc-1ikvc&key=AIzaSyBmlXlslIssD1zOH_GvxoD0z5UCTqjIGDc"
+var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:jnafc-1ikvc&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
 
   $.ajax({
           url: query3URL,
@@ -67,7 +78,6 @@ var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=00
           $('#displayResults3').append(content3);
       }
 
-    });
     });
 
 
