@@ -1,8 +1,8 @@
-$("#submitbtn").on("click", function (event) {
+$("#searchButton").on("click", function (event) {
 
 event.preventDefault();
 
-var SearchTerm = $("#searchterm").val().trim();
+var SearchTerm = $("#search").val().trim();
 
 console.log ("Search Term: " + SearchTerm);
 
