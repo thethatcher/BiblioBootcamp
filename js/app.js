@@ -66,4 +66,3 @@ function getYoutubeResults(){
 	    this.title;
 	}
 }
-
