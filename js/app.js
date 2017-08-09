@@ -1,11 +1,34 @@
+// Initialize Firebase
+var config = {
+apiKey: "AIzaSyBMx99hwg0NjmMAG3CkdqDOrOZqU1stosA",
+authDomain: "groupproject1-dbe33.firebaseapp.com",
+databaseURL: "https://groupproject1-dbe33.firebaseio.com",
+projectId: "groupproject1-dbe33",
+storageBucket: "",
+messagingSenderId: "935455613863"
+};
+firebase.initializeApp(config);
+database = firebase.database();
+
+console.log("app.js linked successfully");
+
 var query = "Jquery getJSON";
 
 $("#searchButton").click(function(){
 	query = $("#search").val();
-	getYoutubeResults();
+	getYoutubeResults(popDom);
+	database.ref().push({
+		"SearchTerm": query
+		,"Timestamp": moment().format("DD-Mo-YYYY HH:mm:ss")
+	})
+	
 });  
 
-function getYoutubeResults(){
+function popDom(param1){
+	console.log("testing successfully", param1);
+}
+
+function getYoutubeResults(callback){
 
 	var url = 'https://www.googleapis.com/youtube/v3/search';
 	var url2 = 'https://www.googleapis.com/youtube/v3/videos';
@@ -48,12 +71,8 @@ function getYoutubeResults(){
 	            tempVideo.title = response.items[i].snippet.title;
 	            youtubeVideos.push(tempVideo);
 	        }
-	        listResults(youtubeVideos);
+	        callback(youtubeVideos);
 	    });
-	}
-
-	function listResults(array){
-	    console.log("Video Array: ", array);
 	}
 
 	function youtubeVid(){
