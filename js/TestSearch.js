@@ -21,6 +21,11 @@ $("#searchForm").submit(function(event){
   else if(currentBtn === "youtube"){youtubeClick();}
 });
 
+$(".button").click(function(){
+  $(".button").css("filter", "grayscale(0)")
+  $(this).css("filter", "grayscale(100%)");
+})
+
 $("#W3SearchButton").on("click", function (event) {
   w3Click();
   currentBtn = "w3";
@@ -233,9 +238,4 @@ function getYoutubeResults(callback){
       this.description ;
       this.title;
   }
-
-  $(".button").click(function(){
-    $(".button").css("filter", "grayscale(0)")
-    $(this).css("filter", "grayscale(100%)");
- })
 }
