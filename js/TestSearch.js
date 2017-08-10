@@ -233,4 +233,9 @@ function getYoutubeResults(callback){
       this.description ;
       this.title;
   }
+
+  $(".button").click(function(){
+    $(".button").css("filter", "grayscale(0)")
+    $(this).css("filter", "grayscale(100%)");
+ })
 }
