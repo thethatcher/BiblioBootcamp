@@ -10,22 +10,37 @@ messagingSenderId: "935455613863"
 firebase.initializeApp(config);
 database = firebase.database();
 
-console.log("app.js linked successfully");
-
 var query = "Jquery getJSON";
 
-$("#searchButton").click(function(){
+$("#youTubeSearchButton").click(function(){
 	query = $("#search").val();
 	getYoutubeResults(popDom);
 	database.ref().push({
 		"SearchTerm": query
 		,"Timestamp": moment().format("DD-Mo-YYYY HH:mm:ss")
+		,"Button_Pushed":"Youtube"
 	})
 	
 });  
 
-function popDom(param1){
-	console.log("testing successfully", param1);
+function popDom(array){
+	//TODO create DOM elements  and populate results. 
+	//filter bad results
+	for (var i = 0; i < array.length; i++) {
+		if (array[i].likePercentage < .9 && array[i].statistics.viewCount < 2000) {
+			array.splice(i,1);
+		}
+	}
+	console.log("filtered array ", array);
+	//use a for loop to create div results
+	for (var i = 0; i < array.length; i++) {
+		var youtubeContent = "<div id='contentItem'><h3>" + 
+		"<a href=" + array[i].url+" target='_blank'>" + 
+		array[i].title + "</a>" + "</h3>" + "<p> Views: " +
+		 array[i].statistics.viewCount + "likes:  " + array[i].statistics.likeCount + "</p></div>";
+		 $("#empty-div").append(youtubeContent);
+	}
+
 }
 
 function getYoutubeResults(callback){
@@ -36,7 +51,7 @@ function getYoutubeResults(callback){
 	    part: 'snippet',
 	    key: 'AIzaSyCYGQsuv0YLyrE4N11eXj52gBvsnfJ5v9s',
 	    q: query,
-	    maxResults: 50
+	    maxResults: 5
 	};
 	var idString = "";
 	var youtubeVideos = [];
@@ -76,12 +91,12 @@ function getYoutubeResults(callback){
 	}
 
 	function youtubeVid(){
+	    this.likePercentage ;
+	    this.statistics ;
 	    this.id ;
 	    this.url ;
 	    this.thumbnail ;
 	    this.description ;
-	    this.statistics ;
-	    this.likePercentage ;
 	    this.title;
 	}
 }
