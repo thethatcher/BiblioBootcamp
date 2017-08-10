@@ -29,9 +29,9 @@
         <div class="input-field">
           <div ng-app>
           <input ng-model="name" placeholder="What would you like to learn?" id="search" type="search" required>
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
           <input type="submit" name="submitBtn" style="display:none">
-          <i class="material-icons">close</i>
+          <i class="material-icons black-text">close</i>
           <h2 id="learn">I want to learn about...</h2>
           <h2>{{name}}</h2>
           </div>
@@ -54,11 +54,12 @@
     <div class="section">
 
       <!--   Icon Section   -->
-    <div class="row">
+    <div class="row center-align">
       <a id="W3SearchButton" class="button">  <img src="images/w3Schools.png" style="width: 200px;"></a>
       <a id="googleSearchButton" class="button"> <img src="images/googleIcon.png" style="width: 150px;"></a>
       <a id="stackOverflowSearchButton" class="button"> <img src="images/stackOverflow.png" style="width: 150px;"></a>
       <a id="youTubeSearchButton" class="button"> <img src="images/youTube.png" style="width: 150px;"></a>
+      <hr>
     </div>
         
         <div id="empty-div"></div><!--Div to hold some JSON response object stuff!-->

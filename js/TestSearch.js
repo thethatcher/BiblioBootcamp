@@ -19,6 +19,7 @@ $("#searchForm").submit(function(event){
   else if(currentBtn === "stack"){stackClick();}
   else if(currentBtn === "google"){googleClick();}
   else if(currentBtn === "youtube"){youtubeClick();}
+  $("#spacer").css("height","1px");
 });
 
 $(".button").click(function(){
