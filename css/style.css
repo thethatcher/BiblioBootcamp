@@ -5,6 +5,7 @@
  *
  * Made By MaterializeCSS.com
  */
+<<<<<<< HEAD
 a {
   margin-left: 70px;
 
@@ -16,7 +17,21 @@ img {
    box-shadow: 5px 5px 5px #888888;
 }
 
+=======
+.page-footer{
+>>>>>>> 89b0c16dc29eb24338be829a63571d1be772d215
 
+}
+#spacer{
+  height:200px;
+}
+
+h3{
+  font-size: 1.92rem;
+}
+.views, .likes{
+  font-weight: bold;
+}
 #learn{
   margin-top: 40px;
 }
