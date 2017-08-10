@@ -76,3 +76,8 @@ h5{
   text-shadow: -2px 1px rgba(0,0,0,1);
   -webkit-text-stroke: 1px rgba(0,0,0,1);
 }
+
+.thumbnail{
+  float: left;
+  padding-right: 15px;
+}

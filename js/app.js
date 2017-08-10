@@ -24,20 +24,22 @@ $("#youTubeSearchButton").click(function(){
 });  
 
 function popDom(array){
-	//TODO create DOM elements  and populate results. 
+	//TODO create DOM elements  and populate results.
+	$("#empty-div").empty(); 
 	//filter bad results
 	for (var i = 0; i < array.length; i++) {
 		if (array[i].likePercentage < .9 && array[i].statistics.viewCount < 2000) {
 			array.splice(i,1);
 		}
 	}
-	console.log("filtered array ", array);
 	//use a for loop to create div results
 	for (var i = 0; i < array.length; i++) {
-		var youtubeContent = "<div id='contentItem'><h3>" + 
+		var youtubeContent = "<div class='contentItem'><h3>" + 
 		"<a href=" + array[i].url+" target='_blank'>" + 
+		"<img src='" + array[i].thumbnail + "' class='thumbnail'>" +
 		array[i].title + "</a>" + "</h3>" + "<p> Views: " +
-		 array[i].statistics.viewCount + "likes:  " + array[i].statistics.likeCount + "</p></div>";
+		 array[i].statistics.viewCount + "         likes:  " + array[i].statistics.likeCount + "</p></div>"
+		 + '<div class="spacer" style="clear: both;"></div>';
 		 $("#empty-div").append(youtubeContent);
 	}
 
