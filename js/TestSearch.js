@@ -106,7 +106,11 @@ var query2URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=co
 
               
             
-            var content2 = "<div class='contentItem'><h3>" +  "<a href='" + response2.items[i].link + "'target='_blank'>"+ response2.items[i].title+ "</a>"  + "</h1> <p>"+ response2.items[i].snippet + "</p></div>";
+            var content2 = "<div class='contentItem'><h3>" + 
+             "<a href='" + response2.items[i].link + 
+             "'target='_blank'>"+ escapeHtmlChars(response2.items[i].title) + 
+             "</a>"  + "</h1> <p>"+ escapeHtmlChars(response2.items[i].snippet) + 
+             "</p></div>";
 
             $('#empty-div').append(content2);
             }
@@ -144,7 +148,10 @@ function googleClick(){
 
             
           
-          var content3 = "<div class='contentItem'><h3>" +  "<a href='" + response3.items[i].link + "'target='_blank'>"+ response3.items[i].title+ "</a>"  + "</h1> <p>"+ response3.items[i].snippet + "</p></div>";
+          var content3 = "<div class='contentItem'><h3><a href='" +
+           response3.items[i].link + "'target='_blank'>"+
+           escapeHtmlChars(response3.items[i].title) + "</a></h1> <p>"+ 
+           escapeHtmlChars(response3.items[i].snippet) + "</p></div>";
 
           $('#empty-div').append(content3);
       }
@@ -264,4 +271,5 @@ function escapeHtmlChars(string){
       string = string.substr(0,i) + "&apos" + string.substr(i+1,string.length);
     }
   }
+  return string;
 }
