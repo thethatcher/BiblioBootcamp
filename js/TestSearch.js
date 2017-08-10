@@ -67,14 +67,17 @@ $("#googleSearchButton").on("click",function(event){
 
   $("#empty-div").empty();
 
-  var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:jnafc-1ikvc&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
   var SearchTerm = $("#search").val().trim();
+
+  var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:jnafc-1ikvc&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
+ 
 
   console.log ("Search Term: " + SearchTerm);
   $.ajax({
           url: query3URL,
           method: 'GET'
         }).done(function(response3) {
+          console.log(query3URL);
           console.log(response3);
 
           for (var i = 0; i < response3.items.length; i++) {
