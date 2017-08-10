@@ -30,7 +30,7 @@ var queryURL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004
     });
     });
 	
-$("#googleSearchButton").on("click", function (event) {
+$("#stackOverflowSearchButton").on("click", function (event) {
 
 // event.preventDefault();
 
@@ -61,8 +61,14 @@ var query2URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=00
 });
 
 //Google (Exlcuding W3 Schools, Overstack, YouTube)
-var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:jnafc-1ikvc&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
+$("#googleSearchButton").on("click",function(event){
 
+  $("#empty-div").empty();
+
+  var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:jnafc-1ikvc&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
+  var SearchTerm = $("#search").val().trim();
+
+  console.log ("Search Term: " + SearchTerm);
   $.ajax({
           url: query3URL,
           method: 'GET'
@@ -75,10 +81,11 @@ var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=00
           
           var content3 = "<div id='contentItem'><h1>" + response3.items[i].title + "</h1> <a href=" + response3.items[i].link + ">"+ response3.items[i].link+ "</a>"  + "</h1> <p>Section: "+ response3.items[i].snippet + "</p></div>";
 
-          $('#displayResults3').append(content3);
+          $('#empty-div').append(content3);
       }
 
     });
+});
 
 
 
