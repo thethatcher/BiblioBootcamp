@@ -39,11 +39,12 @@
           <!-- <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a> -->
        <nav>
     <div class="nav-wrapper">
-      <form>
+      <form id="searchForm">
         <div class="input-field">
           <div ng-app>
           <input ng-model="name" placeholder="What would you like to learn?" id="search" type="search" required>
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <input type="submit" name="submitBtn">
           <i class="material-icons">close</i>
           <h2 id="learn">I want to learn about...</h2>
           <h2>{{name}}</h2>
