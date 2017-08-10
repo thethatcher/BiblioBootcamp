@@ -24,6 +24,7 @@ $("#searchForm").submit(function(event){
 $("#W3SearchButton").on("click", function (event) {
   w3Click();
   currentBtn = "w3";
+  $("#spacer").attr("height","0px");
 });
 
 function w3Click(){
@@ -65,6 +66,7 @@ var queryURL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=cou
 $("#stackOverflowSearchButton").on("click", function (event) {
   stackClick();
   currentBtn = "stack";
+  $("#spacer").attr("height","0px");
 });
 
 function stackClick(){
@@ -106,6 +108,7 @@ var query2URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=co
 $("#googleSearchButton").on("click",function(event){
   googleClick();
   currentBtn = "google";  
+  $("#spacer").attr("height","0px");
 });
 
 function googleClick(){
@@ -142,6 +145,7 @@ function googleClick(){
 $("#youTubeSearchButton").click(function(){
   youtubeClick();
   currentBtn = "youtube";
+  $("#spacer").attr("height","0px");
 });  
 
 function youtubeClick(){
@@ -169,9 +173,9 @@ function updateResults(array){
     var youtubeContent = "<div class='contentItem'><h3>" + 
     "<a href=" + array[i].url+" target='_blank'>" + 
     "<img src='" + array[i].thumbnail + "' class='thumbnail'>" +
-    array[i].title + "</a>" + "</h3>" + "<p> Views: " +
-     array[i].statistics.viewCount + "         likes:  " + array[i].statistics.likeCount + "</p></div>"
-     + '<div class="spacer" style="clear: both;"></div>';
+    array[i].title + "</a>" + "</h3>" + "<p><span class='views'> Views: </span>" +
+     array[i].statistics.viewCount + " <span class='likes'>Likes:  </span>" + array[i].statistics.likeCount + "</p></div>"
+     + '<div class="space" style="clear: both;"></div>';
      $("#empty-div").append(youtubeContent);
   }
 
