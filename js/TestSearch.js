@@ -40,9 +40,8 @@ function w3Click(){
     ,"Button_Pushed":"W3-Schools"
   })
 
-
-  //W3 Schools
-  var queryURL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:djvpgk424qy&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
+//W3 Schools
+var queryURL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=countryUS&cx=004474692957123199963:djvpgk424qy&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
 
   $.ajax({
           url: queryURL,
@@ -75,15 +74,15 @@ function stackClick(){
 
   var SearchTerm = $("#search").val().trim();
 
+console.log ("Search Term: " + SearchTerm);
+//Overstack.com
+var query2URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=countryUS&cx=004474692957123199963:zwg44jgvva0&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
   console.log ("Search Term: " + SearchTerm);
   database.ref().push({
     "SearchTerm": SearchTerm
     ,"Timestamp": moment().format("DD-Mo-YYYY HH:mm:ss")
     ,"Button_Pushed":"StackOverflow"
   })
-
-  //Stackoverflow
-  var query2URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:zwg44jgvva0&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
 
     $.ajax({
             url: query2URL,
@@ -111,16 +110,15 @@ $("#googleSearchButton").on("click",function(event){
 
 function googleClick(){
   $("#empty-div").empty();
-  console.log("google searched");
   var SearchTerm = $("#search").val().trim();
+
+  var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=countryUS&cx=004474692957123199963:jnafc-1ikvc&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
   database.ref().push({
     "SearchTerm": SearchTerm
     ,"Timestamp": moment().format("DD-Mo-YYYY HH:mm:ss")
     ,"Button_Pushed":"Google"
   })
 
-  var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:jnafc-1ikvc&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
- 
 
   console.log ("Search Term: " + SearchTerm);
   $.ajax({
