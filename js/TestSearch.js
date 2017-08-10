@@ -10,7 +10,7 @@ console.log ("Search Term: " + SearchTerm);
 
 
 //W3 Schools
-var queryURL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:djvpgk424qy&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
+var queryURL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=countryUS&cx=004474692957123199963:djvpgk424qy&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
 
   $.ajax({
           url: queryURL,
@@ -40,7 +40,7 @@ var SearchTerm = $("#search").val().trim();
 
 console.log ("Search Term: " + SearchTerm);
 //Overstack.com
-var query2URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:zwg44jgvva0&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
+var query2URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=countryUS&cx=004474692957123199963:zwg44jgvva0&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
 
   $.ajax({
           url: query2URL,
@@ -64,9 +64,10 @@ var query2URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=00
 $("#googleSearchButton").on("click",function(event){
 
   $("#empty-div").empty();
-
-  var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cx=004474692957123199963:jnafc-1ikvc&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
+  
   var SearchTerm = $("#search").val().trim();
+  var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=countryUS&cx=004474692957123199963:jnafc-1ikvc&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
+  
 
   console.log ("Search Term: " + SearchTerm);
   $.ajax({
