@@ -34,6 +34,11 @@ function w3Click(){
   var SearchTerm = $("#search").val().trim();
 
   console.log ("Search Term: " + SearchTerm);
+  database.ref().push({
+    "SearchTerm": SearchTerm
+    ,"Timestamp": moment().format("DD-Mo-YYYY HH:mm:ss")
+    ,"Button_Pushed":"W3-Schools"
+  })
 
 //W3 Schools
 var queryURL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=countryUS&cx=004474692957123199963:djvpgk424qy&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
@@ -72,7 +77,12 @@ function stackClick(){
 console.log ("Search Term: " + SearchTerm);
 //Overstack.com
 var query2URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=countryUS&cx=004474692957123199963:zwg44jgvva0&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
-
+  console.log ("Search Term: " + SearchTerm);
+  database.ref().push({
+    "SearchTerm": SearchTerm
+    ,"Timestamp": moment().format("DD-Mo-YYYY HH:mm:ss")
+    ,"Button_Pushed":"StackOverflow"
+  })
 
     $.ajax({
             url: query2URL,
@@ -101,14 +111,20 @@ $("#googleSearchButton").on("click",function(event){
 function googleClick(){
   $("#empty-div").empty();
   var SearchTerm = $("#search").val().trim();
+
   var query3URL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=countryUS&cx=004474692957123199963:jnafc-1ikvc&key=AIzaSyAXET23jWz1E-N-JeBJ-3rGq8oqQ-Cy9gc"
+  database.ref().push({
+    "SearchTerm": SearchTerm
+    ,"Timestamp": moment().format("DD-Mo-YYYY HH:mm:ss")
+    ,"Button_Pushed":"Google"
+  })
+
 
   console.log ("Search Term: " + SearchTerm);
   $.ajax({
           url: query3URL,
           method: 'GET'
         }).done(function(response3) {
-          console.log(query3URL);
           console.log(response3);
 
           for (var i = 0; i < response3.items.length; i++) {
@@ -136,7 +152,7 @@ function youtubeClick(){
     "SearchTerm": query
     ,"Timestamp": moment().format("DD-Mo-YYYY HH:mm:ss")
     ,"Button_Pushed":"Youtube"
-  })
+  });
 }
 
 function updateResults(array){
