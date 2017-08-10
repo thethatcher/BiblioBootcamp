@@ -61,7 +61,11 @@ var queryURL="https://www.googleapis.com/customsearch/v1?q="+SearchTerm+"&cr=cou
 
             
           
-          var content = "<div class='contentItem'><h3>" + "<a href='" + response.items[i].formattedUrl+"'target='_blank'>" + response.items[i].title + "</a>" + "</h3>" + "<p>"+ response.items[i].snippet + "</p></div>";
+          var content = "<div class='contentItem'><h3>" + 
+          "<a href='" +  response.items[i].formattedUrl+ 
+          "'target='_blank'>" + escapeHtmlChars(response.items[i].title) + 
+          "</a>" + "</h3>" + "<p>"+ escapeHtmlChars(response.items[i].snippet) + 
+          "</p></div>";
           console.log(content);
           $('#empty-div').append(content);
           }
@@ -242,5 +246,22 @@ function getYoutubeResults(callback){
       this.thumbnail ;
       this.description ;
       this.title;
+  }
+}
+
+function escapeHtmlChars(string){
+  for (var i = 0; i < string.length; i++) {
+    if(string.charAt(i) === '<'){
+      string = string.substr(0,i) + "&lt" + string.substr(i+1,string.length);
+    }
+    else if(string.charAt(i) === '>'){
+      string = string.substr(0,i) + "&gt" + string.substr(i+1,string.length);
+    }
+    else if(string.charAt(i) === '"'){
+      string = string.substr(0,i) + "&quot" + string.substr(i+1,string.length);
+    }
+    else if(string.charAt(i) === "'"){
+      string = string.substr(0,i) + "&apos" + string.substr(i+1,string.length);
+    }
   }
 }
