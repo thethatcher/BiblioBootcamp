@@ -67,6 +67,11 @@ h1, h5{
   font-family: 'Archivo Black', sans-serif;
 }
 
+.contentItem {
+    background-color: aliceblue;
+    padding: 1em;
+    margin: .5em;
+}
 .btn-large{
   background-color: darkturquoise;
 }
